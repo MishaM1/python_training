@@ -20,10 +20,10 @@ class second_test(unittest.TestCase):
     def test_second_test(self):
         wd = self.wd
         self.open_homepage(wd)
-        self.login(wd)
+        self.login(wd, username="admin", password="secret")
         self.open_group_page(wd)
         self.new_group(wd)
-        self.filling_group_form(wd)
+        self.filling_group_form(wd, name="test group2", header="test", footer="test_r")
         self.submit_group(wd)
         self.group_page_open(wd)
         self.logout(wd)
@@ -37,16 +37,16 @@ class second_test(unittest.TestCase):
     def submit_group(self, wd):
         wd.find_element_by_name("submit").click()
 
-    def filling_group_form(self, wd):
+    def filling_group_form(self, wd, name, header, footer):
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("test group2")
+        wd.find_element_by_name("group_name").send_keys(name)
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("test")
+        wd.find_element_by_name("group_header").send_keys(header)
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("test")
+        wd.find_element_by_name("group_footer").send_keys(footer)
 
     def new_group(self, wd):
         wd.find_element_by_name("new").click()
@@ -54,7 +54,7 @@ class second_test(unittest.TestCase):
     def open_group_page(self, wd):
         wd.find_element_by_link_text("groups").click()
 
-    def login(self, wd, username="admin", password="secret"):
+    def login(self, wd, username, password):
         wd.find_element_by_css_selector("html").click()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
