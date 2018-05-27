@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import time, unittest
+from tlf import Telephones_class
 
 def is_alert_present(wd):
     try:
@@ -22,7 +23,7 @@ class third(unittest.TestCase):
         self.user_login(wd, "admin", "secret")
         self.new_contact(wd)
         self.name_and_address(wd, "a1", "b2", "c3", "d4", "mr.", "Addressbook co.", "test", "test test 2")
-        self.telephones(wd, "456", "4568", "45689", "456688")
+        self.telephones(wd, Telephones_class("456", "4568", "45689", "456688"))
         self.email(wd, "test1@co", "test333@dd", "test444@asa", "asd32")
         self.birth_date(wd, "//div[@id='content']/form/select[1]//option[3]",
                         "//div[@id='content']/form/select[2]//option[2]", "1998")
@@ -79,19 +80,19 @@ class third(unittest.TestCase):
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys("%s" % homepage)
 
-    def telephones(self, wd, home, mobile, work, fax):
+    def telephones(self, wd, telephones_1):
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys("%s" % home)
+        wd.find_element_by_name("home").send_keys("%s" % telephones_1.home)
         wd.find_element_by_name("mobile").click()
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys("%s" % mobile)
+        wd.find_element_by_name("mobile").send_keys("%s" % telephones_1.mobile)
         wd.find_element_by_name("work").click()
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys("%s" % work)
+        wd.find_element_by_name("work").send_keys("%s" % telephones_1.work)
         wd.find_element_by_name("fax").click()
         wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys("%s" % fax)
+        wd.find_element_by_name("fax").send_keys("%s" % telephones_1.fax)
 
     def name_and_address(self, wd, name, middlename, surname, nickname, title, company, address, address_personal):
         wd.find_element_by_name("firstname").click()
