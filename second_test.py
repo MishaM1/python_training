@@ -19,9 +19,7 @@ class second_test(unittest.TestCase):
 
     def test_second_test(self):
         wd = self.wd
-        self.open_homepage(wd)
         self.login(wd, username="admin", password="secret")
-        self.open_group_page(wd)
         self.new_group(wd)
         self.filling_group_form(wd, Group(name="test group2", header="test", footer="test_r"))
         self.submit_group(wd)
@@ -30,9 +28,7 @@ class second_test(unittest.TestCase):
 
     def test_empty_group(self):
         wd = self.wd
-        self.open_homepage(wd)
         self.login(wd, username="admin", password="secret")
-        self.open_group_page(wd)
         self.new_group(wd)
         self.filling_group_form(wd, Group(name="", header="", footer=""))
         self.submit_group(wd)
@@ -60,12 +56,14 @@ class second_test(unittest.TestCase):
         wd.find_element_by_name("group_footer").send_keys(group.footer)
 
     def new_group(self, wd):
+        self.open_group_page(wd)
         wd.find_element_by_name("new").click()
 
     def open_group_page(self, wd):
         wd.find_element_by_link_text("groups").click()
 
     def login(self, wd, username, password):
+        self.open_homepage(wd)
         wd.find_element_by_css_selector("html").click()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
