@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
-import time, unittest
+import unittest
 from tlf import Telephones_class
 
 def is_alert_present(wd):
@@ -17,7 +17,6 @@ class third(unittest.TestCase):
         self.wd.implicitly_wait(60)
     
     def test_third(self):
-        success = True
         wd = self.wd
         self.open_homepage(wd)
         self.user_login(wd, "admin", "secret")
