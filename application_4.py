@@ -1,4 +1,5 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
+from python_training.fixture.session import SessionHelper
 
 
 class Application4:
@@ -6,10 +7,7 @@ class Application4:
     def __init__ (self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
-
-    def logout(self):
-        wd = self.wd
-        wd.find_element_by_link_text("Logout").click()
+        self.session = SessionHelper(self)
 
     def destroy(self):
         self.wd.quit()
@@ -113,18 +111,6 @@ class Application4:
         wd = self.wd
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
         wd.find_element_by_link_text("add new").click()
-
-    def user_login(self, name, password):
-        wd = self.wd
-        self.open_homepage()
-        wd.find_element_by_id("LoginForm").click()
-        wd.find_element_by_name("user").click()
-        wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("%s" % name)
-        wd.find_element_by_css_selector("html").click()
-        wd.find_element_by_name("pass").click()
-        wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("%s" % password)
 
     def open_homepage(self):
         wd = self.wd
