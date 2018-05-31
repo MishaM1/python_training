@@ -4,6 +4,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 import unittest
 from telephone import Telephones_class
 
+
 def is_alert_present(wd):
     try:
         wd.switch_to_alert().text
@@ -16,12 +17,14 @@ class new_user(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
-    
+
     def test_valid_user_creation(self):
         wd = self.wd
-        self.open_homepage(wd)
         self.user_login(wd, "admin", "secret")
-        self.new_contact(wd)
+        self.create_user()
+
+    def create_user(self):
+        wd = self.wd
         self.name_and_address(wd, "a1", "b2", "c3", "d4", "mr.", "Addressbook co.", "test", "test test 2")
         self.telephones(wd, Telephones_class("456", "4568", "45689", "456688"))
         self.email(wd, "test1@co", "test333@dd", "test444@asa", "asd32")
@@ -95,6 +98,7 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("fax").send_keys("%s" % telephones_1.fax)
 
     def name_and_address(self, wd, name, middlename, surname, nickname, title, company, address, address_personal):
+        self.new_contact(wd)
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("%s" % name)
@@ -125,6 +129,7 @@ class new_user(unittest.TestCase):
         wd.find_element_by_link_text("add new").click()
 
     def user_login(self, wd, name, password):
+        self.open_homepage(wd)
         wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
@@ -139,6 +144,7 @@ class new_user(unittest.TestCase):
 
     def tearDown(self):
         self.wd.quit()
+
 
 if __name__ == '__main__':
     unittest.main()
