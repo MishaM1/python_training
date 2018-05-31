@@ -1,40 +1,21 @@
-# -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.common.action_chains import ActionChains
-import unittest
-from telephone import Telephones_class
 
 
-def is_alert_present(wd):
-    try:
-        wd.switch_to_alert().text
-        return True
-    except:
-        return False
+class Application4:
 
-
-class new_user(unittest.TestCase):
-    def setUp(self):
+    def __init__ (self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
 
-    def test_valid_user_creation(self):
+    def logout(self):
         wd = self.wd
-        self.user_login(wd, "admin", "secret")
-        self.create_user()
+        wd.find_element_by_link_text("Logout").click()
 
-    def create_user(self):
+    def destroy(self):
+        self.wd.quit()
+
+    def secondary_data(self, address2, phone2, notes):
         wd = self.wd
-        self.name_and_address(wd, "a1", "b2", "c3", "d4", "mr.", "Addressbook co.", "test", "test test 2")
-        self.telephones(wd, Telephones_class("456", "4568", "45689", "456688"))
-        self.email(wd, "test1@co", "test333@dd", "test444@asa", "asd32")
-        self.birth_date(wd, "//div[@id='content']/form/select[1]//option[3]",
-                        "//div[@id='content']/form/select[2]//option[2]", "1998")
-        self.anniversary_date(wd, "2010", "//div[@id='content']/form/select[3]//option[5]",
-                              "//div[@id='content']/form/select[4]//option[6]")
-        self.secondary_data(wd, "12312", "13231231231", "312312312")
-
-    def secondary_data(self, wd, address2, phone2, notes):
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
         wd.find_element_by_name("address2").send_keys("%s" % address2)
@@ -46,9 +27,9 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("notes").send_keys("%s" % notes)
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
         wd.find_element_by_link_text("home page").click()
-        wd.find_element_by_link_text("Logout").click()
 
-    def anniversary_date(self, wd, year, date_a, month_a):
+    def anniversary_date(self, year, date_a, month_a):
+        wd = self.wd
         if not wd.find_element_by_xpath("%s" % date_a).is_selected():
             wd.find_element_by_xpath(date_a).click()
         if not wd.find_element_by_xpath("%s" % month_a).is_selected():
@@ -57,7 +38,8 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("ayear").clear()
         wd.find_element_by_name("ayear").send_keys("%s" % year)
 
-    def birth_date(self, wd, date_b, month_b, year_b):
+    def birth_date(self, date_b, month_b, year_b):
+        wd = self.wd
         if not wd.find_element_by_xpath("%s" % date_b).is_selected():
             wd.find_element_by_xpath(date_b).click()
         if not wd.find_element_by_xpath(date_b).is_selected():
@@ -69,7 +51,8 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys("%s" % year_b)
 
-    def email(self, wd, email, email2, email3, homepage):
+    def email(self, email, email2, email3, homepage):
+        wd = self.wd
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys("%s" % email)
@@ -83,7 +66,8 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("homepage").clear()
         wd.find_element_by_name("homepage").send_keys("%s" % homepage)
 
-    def telephones(self, wd, telephones_1):
+    def telephones(self, telephones_1):
+        wd = self.wd
         wd.find_element_by_name("home").click()
         wd.find_element_by_name("home").clear()
         wd.find_element_by_name("home").send_keys("%s" % telephones_1.home)
@@ -97,8 +81,9 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("fax").clear()
         wd.find_element_by_name("fax").send_keys("%s" % telephones_1.fax)
 
-    def name_and_address(self, wd, name, middlename, surname, nickname, title, company, address, address_personal):
-        self.new_contact(wd)
+    def name_and_address(self, name, middlename, surname, nickname, title, company, address, address_personal):
+        wd = self.wd
+        self.new_contact()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys("%s" % name)
@@ -124,12 +109,14 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("address").clear()
         wd.find_element_by_name("address").send_keys("%s" % address_personal)
 
-    def new_contact(self, wd):
+    def new_contact(self):
+        wd = self.wd
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
         wd.find_element_by_link_text("add new").click()
 
-    def user_login(self, wd, name, password):
-        self.open_homepage(wd)
+    def user_login(self, name, password):
+        wd = self.wd
+        self.open_homepage()
         wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
@@ -139,12 +126,7 @@ class new_user(unittest.TestCase):
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("%s" % password)
 
-    def open_homepage(self, wd):
+    def open_homepage(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/")
 
-    def tearDown(self):
-        self.wd.quit()
-
-
-if __name__ == '__main__':
-    unittest.main()
