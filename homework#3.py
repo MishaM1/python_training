@@ -2,7 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest
-from tlf import Telephones_class
+from telephone import Telephones_class
 
 def is_alert_present(wd):
     try:
@@ -11,12 +11,12 @@ def is_alert_present(wd):
     except:
         return False
 
-class third(unittest.TestCase):
+class new_user(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
     
-    def test_third(self):
+    def valid_user_creation(self):
         wd = self.wd
         self.open_homepage(wd)
         self.user_login(wd, "admin", "secret")
