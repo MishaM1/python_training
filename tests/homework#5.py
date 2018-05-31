@@ -1,11 +1,11 @@
 import pytest
 from python_training.model.telephone import Telephones_class
-from python_training.fixture.application_4 import Application4
+from python_training.fixture.application import Application
 
 
 @pytest.fixture
 def app(request):
-    fixture = Application4()
+    fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
 

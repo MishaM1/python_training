@@ -2,7 +2,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from python_training.fixture.session import SessionHelper
 
 
-class Application4:
+class Application:
 
     def __init__ (self):
         self.wd = WebDriver(capabilities={"marionette": False})
