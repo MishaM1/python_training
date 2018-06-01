@@ -11,6 +11,7 @@ def app(request):
 
 
 def test_valid_user_creation(app):
+    # Домашнее задание №5 - работает, ура!
     app.session.user_login("admin", "secret")
     app.name_and_address("a1", "b2", "c3", "d4", "mr.", "Addressbook co.", "test", "test test 2")
     app.telephones(Telephones_class("456", "4568", "45689", "456688"))
