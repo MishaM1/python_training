@@ -43,6 +43,7 @@ class ContactHelper:
 
     def delete_first_user(self):
         wd = self.app.wd
+        self.app.open_home_page()
         # select first contact
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         # delete submission
