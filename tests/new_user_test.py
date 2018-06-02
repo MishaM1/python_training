@@ -1,14 +1,5 @@
 # -*- coding: utf-8 -*-
-import pytest
 from python_training.model.contacts import Contact
-from python_training.fixture.application import Application
-
-
-@pytest.fixture
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy)
-    return fixture
 
 
 def test_add_contact(app):
@@ -18,6 +9,7 @@ def test_add_contact(app):
                                home_phone="555555555555", mobile_phone="555555555555564", work_phone="45646465465465456", fax="none",
                                first_email="testye@gmail.com", second_email="sadasdas@gmail.com", third_email="sadasda@mail.ru"))
     app.session.logout()
+
 
 def test_add_empty_contact(app):
     app.open_home_page()

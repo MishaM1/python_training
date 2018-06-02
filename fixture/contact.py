@@ -40,3 +40,10 @@ class ContactHelper:
         wd.find_element_by_name("email3").send_keys(contact.third_email)
         # submit contact creation
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
+
+    def delete_first_user(self):
+        wd = self.app.wd
+        # select first contact
+        wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+        # delete submission
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/input[2]").click()
