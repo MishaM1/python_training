@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
-import time, unittest
-from group import Group
+import unittest
+
 
 def is_alert_present(wd):
     try:
@@ -12,12 +12,12 @@ def is_alert_present(wd):
         return False
 
 
-class second_test(unittest.TestCase):
+class new_group_creation(unittest.TestCase):
     def setUp(self):
         self.wd = WebDriver(capabilities={"marionette": False})
         self.wd.implicitly_wait(60)
 
-    def test_second_test(self):
+    def test_add_new_group(self):
         self.login(username="admin", password="secret")
         self.new_group()
         self.filling_group_form(Group(name="test group2", header="test", footer="test_r"))
@@ -25,7 +25,7 @@ class second_test(unittest.TestCase):
         self.group_page_open()
         self.logout()
 
-    def test_empty_group(self):
+    def test_add_empty_group(self):
         self.login(username="admin", password="secret")
         self.new_group()
         self.filling_group_form( Group(name="", header="", footer=""))
