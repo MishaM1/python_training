@@ -50,3 +50,8 @@ class ContactHelper:
     def open_contact_edit_page(self):
         wd = self.app.wd
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
+
+    def count_contacts(self):
+        wd = self.app.wd
+        self.app.open_home_page()
+        return len(wd.find_elements_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"))
