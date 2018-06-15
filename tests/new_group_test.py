@@ -1,9 +1,0 @@
-# -*- coding: utf-8 -*-
-from python_training.model.group import Group
-
-
-def test_add_new_group(app):
-    app.group.create(Group(name="test group2", header="test", footer="test_r"))
-
-def test_add_empty_group(app):
-    app.group.create(Group(name="", header="", footer=""))

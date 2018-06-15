@@ -13,23 +13,23 @@ class ContactHelper:
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
-        self.contact_text("firstname", contact.first_name)
-        self.contact_text("lastname", contact.last_name)
-        self.contact_text("address", contact.address)
-        self.contact_text("home", contact.home_phone)
-        self.contact_text("mobile", contact.mobile_phone)
-        self.contact_text("work", contact.work_phone)
-        self.contact_text("fax", contact.fax)
-        self.contact_text("email", contact.first_email)
-        self.contact_text("email2", contact.second_email)
-        self.contact_text("email3", contact.third_email)
+        self.contact_field_data("firstname", contact.first_name)
+        self.contact_field_data("lastname", contact.last_name)
+        self.contact_field_data("address", contact.address)
+        self.contact_field_data("home", contact.home_phone)
+        self.contact_field_data("mobile", contact.mobile_phone)
+        self.contact_field_data("work", contact.work_phone)
+        self.contact_field_data("fax", contact.fax)
+        self.contact_field_data("email", contact.first_email)
+        self.contact_field_data("email2", contact.second_email)
+        self.contact_field_data("email3", contact.third_email)
 
-    def contact_text(self, field_name, text):
+    def contact_field_data(self, field_name, field_data):
         wd = self.app.wd
-        if text is not None:
+        if field_data is not None:
             wd.find_element_by_name(field_name).click()
             wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
+            wd.find_element_by_name(field_name).send_keys(field_data)
 
     def modify_first_contact(self, new_contact_data):
         wd = self.app.wd
@@ -39,7 +39,6 @@ class ContactHelper:
         self.fill_contact_form(new_contact_data)
         # update contact
         wd.find_element_by_name("update").click()
-
 
     def delete_first_user(self):
         wd = self.app.wd
