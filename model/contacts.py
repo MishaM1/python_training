@@ -13,3 +13,9 @@ class Contact:
         self.second_email = second_email
         self.third_email = third_email
         self.id = id
+
+    def __repr__(self):
+        return "%s, %s" % (self.id, self.first_name)
+
+    def __eq__(self, other):
+        return self.id == other.id and self.first_name == other.name
