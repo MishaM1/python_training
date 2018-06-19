@@ -35,10 +35,13 @@ class ContactHelper:
             wd.find_element_by_name(field_name).clear()
             wd.find_element_by_name(field_name).send_keys(field_data)
 
-    def modify_first_contact(self, new_contact_data):
+    def modify_first_contact(self):
+        self.modify_contact_by_index(0)
+
+    def modify_contact_by_index(self, index, new_contact_data):
         wd = self.app.wd
         self.app.open_home_page()
-        self.select_first_contact()
+        self.select_contact_by_index(index)
         wd.find_element_by_xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img").click()
         self.fill_contact_form(new_contact_data)
         # update contact
