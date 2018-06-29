@@ -1,4 +1,4 @@
-from selenium.webdriver.firefox.webdriver import WebDriver
+from selenium import webdriver
 from python_training.fixture.session import SessionHelper
 from python_training.fixture.group import GroupHelper
 from python_training.fixture.contact import ContactHelper
@@ -6,12 +6,18 @@ from python_training.fixture.contact import ContactHelper
 
 class Application:
 
-    def __init__ (self):
-        self.wd = WebDriver(capabilities={"marionette": False})
+    def __init__ (self, browser="firefox"):
+        if browser == "firefox":
+            self.wd = webdriver.Firefox(capabilities={"marionette": False})
+        elif browser == "chrome":
+            self.wd = webdriver.Chrome()
+        elif browser == "ie":
+            self.wd = webdriver.Ie()
+        else:
+            raise ValueError("Unrecognized browser %s" % browser)
         self.session = SessionHelper(self)
         self.group = GroupHelper(self)
         self.contact = ContactHelper(self)
-
 
     def is_valid(self):
         try:
