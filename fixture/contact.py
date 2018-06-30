@@ -17,8 +17,8 @@ class ContactHelper:
 
     def fill_contact_form(self, contact):
         wd = self.app.wd
-        self.contact_field_data("firstname", contact.first_name)
-        self.contact_field_data("lastname", contact.last_name)
+        self.contact_field_data("firstname", contact.firstname)
+        self.contact_field_data("lastname", contact.lastname)
         self.contact_field_data("address", contact.address)
         self.contact_field_data("home", contact.homephone)
         self.contact_field_data("mobile", contact.mobilephone)
