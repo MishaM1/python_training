@@ -1,38 +1,44 @@
 [
   {
-    "name": "",
-    "header": "",
+    "py/object": "python_training.model.group.Group",
     "footer": "",
-    "id": null
+    "header": "",
+    "id": null,
+    "name": ""
   },
   {
-    "name": "nameSs",
-    "header": "headerNV8hBh7GQXNzD",
-    "footer": "footerPHy0iWA8jct1jvt51",
-    "id": null
+    "py/object": "python_training.model.group.Group",
+    "footer": "footerrnomQq2zZXHqgFyrLmc",
+    "header": "headerWuMeujxL",
+    "id": null,
+    "name": "namezehmxgzU"
   },
   {
-    "name": "name1f",
-    "header": "header9PBUM8eQgwes",
-    "footer": "footerIzq114BDRRWQ",
-    "id": null
+    "py/object": "python_training.model.group.Group",
+    "footer": "footerXDtpB6vH67VX",
+    "header": "headerZQPnjn1pdYV",
+    "id": null,
+    "name": "name"
   },
   {
-    "name": "name0sR",
-    "header": "headerlO2",
-    "footer": "footerHaz5tWOr1co",
-    "id": null
+    "py/object": "python_training.model.group.Group",
+    "footer": "footercrjtI8ltWH3fvW",
+    "header": "headerRwnAeRUqRonMlBhP2hr",
+    "id": null,
+    "name": "nameET"
   },
   {
-    "name": "namej3I3ib2WZ",
-    "header": "headerFIrgetm",
-    "footer": "footer08HZAuAU",
-    "id": null
+    "py/object": "python_training.model.group.Group",
+    "footer": "footerTsYitLZIRpqbSTR0",
+    "header": "header",
+    "id": null,
+    "name": "nameGnXSLFW"
   },
   {
-    "name": "namemrA",
-    "header": "headertlTOi7Z",
-    "footer": "footercs4wb0OcvI90Ho4H61i",
-    "id": null
+    "py/object": "python_training.model.group.Group",
+    "footer": "footerLVOxHo9pRJCrox",
+    "header": "headerSU0WD",
+    "id": null,
+    "name": "nameC3k2z"
   }
 ]
