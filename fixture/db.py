@@ -1,5 +1,0 @@
-
-
-
-class DbFixture:
-pass
