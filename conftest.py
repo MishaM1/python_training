@@ -23,6 +23,13 @@ def app(request):
     fixture.session.ensure_login(username=target["username"], password=target["password"])
     return fixture
 
+@pytest.fixture
+def db(request):
+    dbfixture = DbFixture()
+    def fin():
+        dbfixture.destroy()
+    request.addfinalizer(fin)
+    return dbfixture
 
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
