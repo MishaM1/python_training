@@ -33,7 +33,7 @@ testdata = [Contact(firstname="", lastname="", address="",
                       fax="", first_email="",
                       second_email="", third_email="")
 ] + [
-    Contact(firstname=random_string_contacts("firstname", 10), lastname=random_string_contacts("lasttname", 10),
+    Contact(firstname=random_string_contacts("firstname", 10), lastname=random_string_contacts("lastname", 10),
             address=random_string_contacts("address", 10), homephone=random_string_contacts("homephone", 10),
             workphone=random_string_contacts("workphone", 10), mobilephone=random_string_contacts("mobilephone", 10),
             secondaryphone=random_string_contacts("secondaryphone", 10), fax=random_string_contacts("fax", 10),

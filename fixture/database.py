@@ -25,18 +25,18 @@ class DbFixture:
         return list
 
     def get_contact_list(self):
-        list = []
+        contact_list = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3 from addressbook")
+            cursor.execute("select id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3, fax from addressbook")
             for row in cursor:
-                (id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3) = row
-                list.append(Contact(id=str(id), firstname=firstname, lastname=lastname, address=address,
+                (id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3, fax) = row
+                contact_list.append(Contact(id=str(id), firstname=firstname, lastname=lastname, address=address,
                  homephone=home, mobilephone=mobile, workphone=work, secondaryphone=phone2,
-                                    first_email=email, second_email=email2, third_email=email3))
+                                    first_email=email, second_email=email2, third_email=email3, fax=fax))
         finally:
             cursor.close()
-        return list
+        return contact_list
 
     def destroy(self):
         self.connection.close()
