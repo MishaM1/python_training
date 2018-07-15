@@ -1,11 +1,12 @@
-from python_training.fixture.database import DbFixture
+from python_training.fixture.orm import ORMFixture
+from python_training.model.group import Group
 
-db = DbFixture(host="127.0.0.1", name="addressbook", user="root", password="")
+check = ORMFixture(host="127.0.0.1", name="addressbook", user="root", password="")
 
 try:
-    groups = db.get_group_list()
-    for group in groups:
-        print(group)
-    print(len(groups))
+    l = db.get_contacts_in_group(Group(id="95"))
+    for item in l:
+        print(item)
+    print(len(l))
 finally:
-    db.destroy()
+    pass # db.destroy()
